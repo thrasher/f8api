@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- sample entry for Spring based configurations -->
+	<bean id="gateway" class="com.toolsforteams._4info.Gateway">
+		<property name="clientId" ref="${gateway.clientId}" />
+		<property name="clientKey" ref="${gateway.clientKey}" />
+		<property name="carrierListUrl" ref="${gateway.url}/list" />
+		<property name="validationRequestUrl" ref="${gateway.url}/msg" />
+	</bean>
+</beans>
