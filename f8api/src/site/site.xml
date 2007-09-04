@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="jacob-gen-plugin">
+	
+	<publishDate format="dd MMM yyyy" />
+	
+	<skin>
+		<groupId>org.apache.tapestry</groupId>
+		<artifactId>maven-skin</artifactId>
+		<version>1.1</version>
+	</skin>
+
+	<body>
+		<links>
+			<item name="Facebook Platform" href="http://developers.facebook.com/" />
+			<item name="Maven" href="http://maven.apache.org/" />
+			<item name="Jason Thrasher" href="http://www.coachthrasher.com/" />
+		</links>
+
+		<menu name="Overview">
+			<item name="Introduction" href="index.html" />
+			<!-- 
+			<item name="Usage" href="usage.html" />
+			<item name="Building" href="building.html" />
+			 -->
+		</menu>
+
+		<menu name="References">
+			<item name="Facebook Platform" href="http://developers.facebook.com/" />
+			<item name="Maven" href="http://maven.apache.org/" />
+		</menu>
+
+		<menu ref="modules" />
+		
+		${reports}
+
+	</body>
+</project>

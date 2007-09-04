@@ -26,9 +26,9 @@ limitations under the License.
 
 	<packaging>jar</packaging>
 
-	<name>Facebook API</name>
+	<name>Facebook F8 Platform API (f8api)</name>
 	<inceptionYear>2007</inceptionYear>
-	<description>Facebook API is a Java API into the Facebook Platform.</description>
+	<description>The Facebook F8 Platform API (f8api) is a Java API into the Facebook Platform.</description>
 
 	<licenses>
 		<license>
@@ -61,6 +61,26 @@ limitations under the License.
 		</developer>
 	</developers>
 	
+	<organization>
+		<name>Jason Thrasher</name>
+		<url>http://www.coachthrasher.com/</url>
+	</organization>
+
+	<distributionManagement>
+		<repository>
+			<id>default</id>
+			<name>Default Repository</name>
+			<url>file:///home/groups/f/f8/f8api/htdocs/</url>
+		</repository>
+		<site>
+			<id>sourceforge</id>
+			<name>SourceForge.net</name>
+			<url>
+				scp://${sf.user}:${sf.pass}@shell.sourceforge.net/home/groups/f/f8/f8api/htdocs/
+			</url>
+		</site>
+	</distributionManagement>
+
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<extensions>
