@@ -15,72 +15,22 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>net.sf.f8api</groupId>
-	<artifactId>f8api</artifactId>
-	<version>1.0-SNAPSHOT</version>
-
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>net.sf.f8api</groupId>
+        <artifactId>f8api-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    
+	<artifactId>f8api-core</artifactId>
 	<packaging>jar</packaging>
-
-	<name>Facebook F8 Platform API (f8api)</name>
-	<inceptionYear>2007</inceptionYear>
-	<description>The Facebook F8 Platform API (f8api) is a Java API into the Facebook Platform.</description>
-
-	<licenses>
-		<license>
-			<name>Apache 2</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-			<comments>A business-friendly OSS license</comments>
-		</license>
-	</licenses>
-
-	<issueManagement>
-		<system>Sourceforge</system>
-		<url>http://sourceforge.net/tracker/?group_id=203327</url>
-	</issueManagement>
-
-	<developers>
-		<developer>
-			<id>gogodoit</id>
-			<name>Jason Thrasher</name>
-			<email>jason AT coachthrasher.com</email>
-			<url>http://www.coachthrasher.com</url>
-			<organization>Jason Thrasher</organization>
-			<organizationUrl>
-				http://www.coachthrasher.com
-			</organizationUrl>
-			<roles>
-				<role>Project Administrator</role>
-			</roles>
-			<timezone>-8</timezone>
-		</developer>
-	</developers>
+	<name>Facebook F8 Platform API - core</name>
 	
-	<organization>
-		<name>Jason Thrasher</name>
-		<url>http://www.coachthrasher.com/</url>
-	</organization>
-
-	<distributionManagement>
-		<repository>
-			<id>default</id>
-			<name>Default Repository</name>
-			<url>file:///home/groups/f/f8/f8api/htdocs/</url>
-		</repository>
-		<site>
-			<id>sourceforge</id>
-			<name>SourceForge.net</name>
-			<url>
-				scp://${sf.user}:${sf.pass}@shell.sourceforge.net/home/groups/f/f8/f8api/htdocs/
-			</url>
-		</site>
-	</distributionManagement>
-
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<extensions>
@@ -120,30 +70,7 @@ limitations under the License.
 			</testResource>
 		</testResources>
 	</build>
-
-	<reporting>
-		<plugins>
-			<plugin>
-				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>taglist-maven-plugin</artifactId>
-				<configuration>
-					<tags>
-						<tag>TODO</tag>
-						<tag>FIXME</tag>
-						<tag>@todo</tag>
-						<tag>@deprecated</tag>
-					</tags>
-				</configuration>
-			</plugin>
-		</plugins>
-	</reporting>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -158,12 +85,12 @@ limitations under the License.
 			<scope>test</scope>
 		</dependency>
 		<!--
-			mvn install:install-file -DgroupId=net.sf.browserlauncher2 -DartifactId=browserlauncher2 -Dversion=1.2 -Dpackaging=jar "-Dfile=J:/distrib/java/BrowserLauncher2-12.jar" 
+			mvn install:install-file -DgroupId=net.sf.browserlauncher2 -DartifactId=browserlauncher2 -Dversion=1.3 -Dpackaging=jar "-Dfile=J:/distrib/java/BrowserLauncher2-1_3.jar" 
 		-->
 		<dependency>
 			<groupId>net.sf.browserlauncher2</groupId>
 			<artifactId>browserlauncher2</artifactId>
-			<version>1.2</version>
+			<version>1.3</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -183,7 +110,7 @@ limitations under the License.
 			<version>${commons-lang.version}</version>
 		</dependency>
 	</dependencies>
-
+	
 	<properties>
 		<jetty.version>6.1.4</jetty.version>
 		<spring.version>2.0.5</spring.version>
@@ -191,12 +118,26 @@ limitations under the License.
 		<log4j.version>1.2.14</log4j.version>
 		<commons-httpclient.version>3.1-rc1</commons-httpclient.version>
 		<commons-lang.version>2.2</commons-lang.version>
-
-		<facebook.apikey>set_your_api_key_here</facebook.apikey>
-		<facebook.secret>set_your_secret_here</facebook.secret>
-		<facebook.desktop>true for desktop, false otherwise</facebook.desktop>
 		
-		<!-- use hosts file to spoof any web address here! -->
+		<!--
+		NOTE: Set your Facebook API key and secret.  It's easiest to set them here, however it's a best-practice
+		to set them in ${user.home}/.m2/settings.xml.  Or they can be set on the command line as:
+		mvn -Dfacebook.apikey=mykey -Dfacebook.secret=mysecret
+		-->
+		<facebook.apikey />
+		<facebook.secret />
+		
+		<!-- true for desktop, false for web application -->
+		<facebook.desktop>true</facebook.desktop>
+		
+		<!--
+		TIP: Use your "hosts" file to spoof any web address here.
+		
+		If you get errors running the JUnit tests with "mvn test",
+		you most likely need to configure the Facebook Callback URL for your application to match the value below.
+		This is done on the facebook page:
+		http://www.facebook.com/developers/editapp.php
+		-->
 		<facebook.callback>http://127.0.0.1:8080/callback</facebook.callback>
 	</properties>
 </project>
