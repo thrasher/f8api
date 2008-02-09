@@ -33,7 +33,7 @@ limitations under the License.
 
     <modules>
         <module>lib</module>
-        <module>f8api</module>
+        <module>core</module>
     </modules>
     
     <build>
