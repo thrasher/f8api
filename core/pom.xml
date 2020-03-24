@@ -19,18 +19,18 @@ limitations under the License.
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>net.sf.f8api</groupId>
         <artifactId>f8api-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    
+
 	<artifactId>f8api-core</artifactId>
 	<packaging>jar</packaging>
 	<name>Facebook F8 Platform API - core</name>
-	
+
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<extensions>
@@ -70,7 +70,7 @@ limitations under the License.
 			</testResource>
 		</testResources>
 	</build>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -85,20 +85,26 @@ limitations under the License.
 			<scope>test</scope>
 		</dependency>
 		<!--
-			mvn install:install-file -DgroupId=net.sf.browserlauncher2 -DartifactId=browserlauncher2 -Dversion=1.3 -Dpackaging=jar "-Dfile=J:/distrib/java/BrowserLauncher2-1_3.jar" 
+			mvn install:install-file -DgroupId=net.sf.browserlauncher2 -DartifactId=browserlauncher2 -Dversion=1.3 -Dpackaging=jar "-Dfile=J:/distrib/java/BrowserLauncher2-1_3.jar"
 		-->
 		<dependency>
 			<groupId>net.sf.browserlauncher2</groupId>
 			<artifactId>browserlauncher2</artifactId>
 			<version>1.3</version>
 		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
+	  <dependency>
+	  	<groupId>org.apache.logging.log4j</groupId>
+	  	<artifactId>log4j-api</artifactId>
+	  	<version>${log4j.version}</version>
 			<scope>compile</scope>
-		</dependency>
-		<dependency>
+	  </dependency>
+	  <dependency>
+	  	<groupId>org.apache.logging.log4j</groupId>
+	  	<artifactId>log4j-core</artifactId>
+	  	<version>${log4j.version}</version>
+			<scope>compile</scope>
+		  </dependency>
+	<dependency>
 			<groupId>commons-httpclient</groupId>
 			<artifactId>commons-httpclient</artifactId>
 			<version>${commons-httpclient.version}</version>
@@ -110,15 +116,15 @@ limitations under the License.
 			<version>${commons-lang.version}</version>
 		</dependency>
 	</dependencies>
-	
+
 	<properties>
 		<jetty.version>6.1.4</jetty.version>
 		<spring.version>2.0.5</spring.version>
 		<junit.version>3.8.2</junit.version>
-		<log4j.version>1.2.14</log4j.version>
+		<log4j.version>2.13.1</log4j.version>
 		<commons-httpclient.version>3.1-rc1</commons-httpclient.version>
 		<commons-lang.version>2.2</commons-lang.version>
-		
+
 		<!--
 		NOTE: Set your Facebook API key and secret.  It's easiest to set them here, however it's a best-practice
 		to set them in ${user.home}/.m2/settings.xml.  Or they can be set on the command line as:
@@ -126,13 +132,13 @@ limitations under the License.
 		-->
 		<facebook.apikey />
 		<facebook.secret />
-		
+
 		<!-- true for desktop, false for web application -->
 		<facebook.desktop>true</facebook.desktop>
-		
+
 		<!--
 		TIP: Use your "hosts" file to spoof any web address here.
-		
+
 		If you get errors running the JUnit tests with "mvn test",
 		you most likely need to configure the Facebook Callback URL for your application to match the value below.
 		This is done on the facebook page:
