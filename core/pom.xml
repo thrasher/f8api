@@ -121,7 +121,7 @@ limitations under the License.
 		<jetty.version>6.1.4</jetty.version>
 		<spring.version>2.0.5</spring.version>
 		<junit.version>3.8.2</junit.version>
-		<log4j.version>2.13.1</log4j.version>
+		<log4j.version>2.13.3</log4j.version>
 		<commons-httpclient.version>3.1-rc1</commons-httpclient.version>
 		<commons-lang.version>2.2</commons-lang.version>
 
